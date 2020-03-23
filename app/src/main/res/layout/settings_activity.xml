@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTitle"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:hint="Название заметки"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:inputType="textPersonName"
+            android:textSize="25sp" />
+
+        <EditText
+
+            android:id="@+id/editTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:hint="Длительность(в минутах)"
+            android:inputType="numberDecimal"
+            android:textSize="20sp" />
+
+
+
+        <EditText
+            android:gravity="start"
+            android:background="@drawable/rect_orange"
+            android:id="@+id/editHintText"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textMultiLine"
+            android:selectAllOnFocus="false"
+            android:layout_marginLeft="2dp"
+            android:hint="Введите заметку"
+            android:layout_marginRight="2dp"
+            android:singleLine="false" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/addButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+
+        android:background="@drawable/circle"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_add"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

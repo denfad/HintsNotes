@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="4"
+            android:paddingLeft="10dp"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:layout_gravity="center_vertical"
+            android:id="@+id/settings"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/sharp_more_horiz_24"
+            android:background="@drawable/circle" />
+
+        <ImageButton
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/round_delete_forever_24"
+            android:id="@+id/delete"
+            android:layout_margin="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:background="@drawable/circle" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
