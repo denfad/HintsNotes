@@ -26,6 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
     public EditText editHintText;
     public ImageButton addButton;
     public boolean newHint=false;
+    public String savingListHint;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         final Intent intent = this.getIntent();
         int position = intent.getIntExtra("hint",Integer.MAX_VALUE);
-        final String savingListHint = intent.getStringExtra("savingListHint");
+        savingListHint = intent.getStringExtra("savingListHint");
         if(hintsDao.getMapSize()>0 && position<hintsDao.getMapSize()){
             hint=hintsDao.getHint(position);
         }
@@ -87,5 +88,12 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent1 = new Intent(getApplicationContext(),HintListActivity.class);
+        intent1.putExtra("savingListHint",savingListHint);
+        startActivity(intent1);
     }
 }

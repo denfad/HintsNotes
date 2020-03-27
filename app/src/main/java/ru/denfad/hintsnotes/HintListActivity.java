@@ -35,7 +35,7 @@ public class HintListActivity extends AppCompatActivity {
     public HintAdapter adapter;
     public boolean isBackButtonPressed = false;
     public SharedPreferences sharedPreferences;
-
+    public String hints;
     public String savingListHint;
 
     @Override
@@ -114,15 +114,14 @@ public class HintListActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         GsonBuilder gsonBuilder = new GsonBuilder();
-        String hints = gsonBuilder.create().toJson(hintsDao.getAllHints());
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(savingListHint, hints);
+        hints = gsonBuilder.create().toJson(hintsDao.getAllHints());
         if(isBackButtonPressed==true) {
-            Log.i("Clear hints onStop",savingListHint+ hints);
+            Log.i("Clear hintDao onStop",savingListHint+ hints);
             hintsDao.clear();
             isBackButtonPressed=false;
-
         }
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(savingListHint, hints);
         Log.i("Save hints onStop", savingListHint+hints);
         editor.apply();
         super.onStop();
@@ -131,17 +130,6 @@ public class HintListActivity extends AppCompatActivity {
     //сохранение заметок при уничтожении активити
     @Override
     protected void onDestroy() {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        String hints = gsonBuilder.create().toJson(hintsDao.getAllHints());
-        Log.i("Save hints onDestroy", savingListHint+hints);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(savingListHint, hints);
-        if(isBackButtonPressed==true) {
-            Log.i("Clear hints onDestroy", savingListHint+hints);
-            hintsDao.clear();
-            isBackButtonPressed=false;
-        }
-        editor.apply();
         super.onDestroy();
     }
 
@@ -205,6 +193,14 @@ public class HintListActivity extends AppCompatActivity {
         public ImageButton settings;
         public ImageButton delete;
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent1 = new Intent(getApplicationContext(),LecturesListActivity.class);
+        isBackButtonPressed=true;
+        Log.i("Clear hints", "true");
+        startActivity(intent1);
     }
 
 }

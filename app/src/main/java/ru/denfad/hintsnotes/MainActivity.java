@@ -96,6 +96,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent1 = new Intent(getApplicationContext(), HintListActivity.class);
+        intent1.putExtra("savingListHint",savingListHint);
+        startActivity(intent1);
+        timer.cancel();
+    }
+
     public class Timer extends CountDownTimer {
         Hint hint;
 
