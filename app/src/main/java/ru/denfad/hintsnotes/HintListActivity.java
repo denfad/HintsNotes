@@ -63,6 +63,8 @@ public class HintListActivity extends AppCompatActivity {
         }
         else Log.i("Get hints", "нет заметок или уже есть в базе данных");
 
+        TextView nameLecture = findViewById(R.id.nameLecture);
+        nameLecture.setText(savingListHint);
 
         //кнопка добавления заметки
         ImageButton addHint= findViewById(R.id.addHint);
@@ -166,6 +168,7 @@ public class HintListActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), SettingsActivity.class);
+                    intent.putExtra("savingListHint",savingListHint);
                     intent.putExtra("hint",hint.getPosition());
                     startActivity(intent);
                 }

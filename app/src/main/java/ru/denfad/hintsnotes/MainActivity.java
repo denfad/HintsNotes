@@ -101,7 +101,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent1 = new Intent(getApplicationContext(), HintListActivity.class);
         intent1.putExtra("savingListHint",savingListHint);
         startActivity(intent1);
-        timer.cancel();
+        if(isActive){
+            timer.cancel();
+        }
+
     }
 
     public class Timer extends CountDownTimer {

@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/fon_zadn">
-
+    tools:context=".MainActivity">
 
 
     <ListView
         android:id="@+id/hintList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="10dp"
+        android:background="@drawable/fon_zadn"
+        android:divider="#00FF9800"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +42,15 @@
             android:src="@drawable/sharp_arrow_back_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="rrrrrrrr"
+            android:gravity="fill_vertical"
+            android:textSize="30sp"
+            android:id="@+id/nameLecture"/>
+
     </LinearLayout>
 
     <ImageButton

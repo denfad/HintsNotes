@@ -55,7 +55,7 @@ public class LecturesListActivity extends AppCompatActivity {
 
         //создание адаптера
         adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1,lectures);
+                this, R.layout.lecture,lectures);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -64,6 +64,15 @@ public class LecturesListActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),HintListActivity.class);
                 intent.putExtra("savingListHint",adapterView.getItemAtPosition(i).toString());
                 startActivity(intent);
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                return true;
             }
         });
 
@@ -87,14 +96,15 @@ public class LecturesListActivity extends AppCompatActivity {
                 .setView(input)
                 .setPositiveButton("Создать", new DialogInterface.OnClickListener() {
 
+
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
                         lectures.add(input.getText().toString());
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         GsonBuilder gsonBuilder = new GsonBuilder();
                         editor.putString("lectures", gsonBuilder.create().toJson(lectures));
                     }
+
                 }).create();
 
         aboutDialog.show();
