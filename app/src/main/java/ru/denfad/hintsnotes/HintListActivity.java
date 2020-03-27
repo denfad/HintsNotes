@@ -118,11 +118,12 @@ public class HintListActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(savingListHint, hints);
         if(isBackButtonPressed==true) {
-            Log.i("Clear hints onStop", hints);
+            Log.i("Clear hints onStop",savingListHint+ hints);
             hintsDao.clear();
+            isBackButtonPressed=false;
 
         }
-        Log.i("Save hints", hints);
+        Log.i("Save hints onStop", savingListHint+hints);
         editor.apply();
         super.onStop();
     }
@@ -132,13 +133,13 @@ public class HintListActivity extends AppCompatActivity {
     protected void onDestroy() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         String hints = gsonBuilder.create().toJson(hintsDao.getAllHints());
-        Log.i("Save hints", hints);
+        Log.i("Save hints onDestroy", savingListHint+hints);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(savingListHint, hints);
         if(isBackButtonPressed==true) {
-            Log.i("Clear hints onDestroy", hints);
+            Log.i("Clear hints onDestroy", savingListHint+hints);
             hintsDao.clear();
-
+            isBackButtonPressed=false;
         }
         editor.apply();
         super.onDestroy();
