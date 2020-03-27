@@ -48,7 +48,7 @@
             android:layout_height="match_parent"
             android:text="rrrrrrrr"
             android:gravity="fill_vertical"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:id="@+id/nameLecture"/>
 
     </LinearLayout>

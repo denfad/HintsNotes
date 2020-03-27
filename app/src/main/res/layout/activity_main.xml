@@ -43,7 +43,7 @@
             android:ems="10"
             android:gravity="start"
             android:inputType="textMultiLine"
-            android:padding="20dp"
+            android:padding="10dp"
             android:text="Bruh"
             android:textAlignment="gravity"
             android:textColor="#FFFFFF"
@@ -55,14 +55,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:elevation="5dp"
             android:ems="10"
-            android:gravity="center"
+            android:gravity="center|top"
             android:inputType="textPersonName"
             android:text="18:00"
-            android:textAlignment="gravity"
             android:textColor="#FFFFFF"
-            android:textSize="50sp"
-            android:elevation="5dp"/>
+            android:textSize="50sp" />
 
     </LinearLayout>
 
@@ -112,14 +111,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:elevation="5dp"
             android:ems="10"
-            android:gravity="center"
+            android:gravity="center|top"
             android:inputType="textPersonName"
             android:text="18:00"
-            android:textAlignment="gravity"
             android:textColor="#FFFFFF"
-            android:textSize="50sp"
-            android:elevation="5dp"/>
+            android:textSize="50sp" />
 
     </LinearLayout>
 
