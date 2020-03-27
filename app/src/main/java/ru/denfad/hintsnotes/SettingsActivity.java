@@ -2,6 +2,7 @@ package ru.denfad.hintsnotes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -36,8 +37,9 @@ public class SettingsActivity extends AppCompatActivity {
         editTime = findViewById(R.id.editTime);
         editHintText = findViewById(R.id.editHintText);
 
-        Intent intent = this.getIntent();
+        final Intent intent = this.getIntent();
         int position = intent.getIntExtra("hint",Integer.MAX_VALUE);
+        final String savingListHint = intent.getStringExtra("savingListHint");
         if(hintsDao.getMapSize()>0 && position<hintsDao.getMapSize()){
             hint=hintsDao.getHint(position);
         }
@@ -73,6 +75,7 @@ public class SettingsActivity extends AppCompatActivity {
                     }
 
                     Intent intent1 = new Intent(getApplicationContext(), HintListActivity.class);
+                    intent1.putExtra("savingListHint",savingListHint);
                     startActivity(intent1);
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(),

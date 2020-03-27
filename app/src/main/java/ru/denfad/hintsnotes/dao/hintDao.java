@@ -89,5 +89,8 @@ public class hintDao extends AppCompatActivity {
         return hints;
     }
 
+    public void clear(){
+        hints.clear();
+    }
 
 }

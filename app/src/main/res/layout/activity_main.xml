@@ -6,79 +6,22 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bckgrnd"
-    tools:context=".MainActivity"
-    >
 
+    tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/piece"
+        android:id="@+id/ll1"
+        android:elevation="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="80dp"
-        android:background="@drawable/rounded_main"
+        android:background="@drawable/rect_orange"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/name1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-
-            android:gravity="center_horizontal|center_vertical"
-
-            android:inputType="textPersonName"
-            android:text="Name"
-            android:textColor="#000000"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/textDisplay1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="7"
-            android:background="@drawable/rect_orange"
-            android:ems="10"
-            android:gravity="start"
-            android:inputType="textMultiLine"
-            android:padding="15dp"
-            android:text="Bruh"
-            android:textAlignment="gravity"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/timerDisplay1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:gravity="center_horizontal|center_vertical"
-            android:inputType="textPersonName"
-            android:text="18:00"
-            android:textAlignment="gravity"
-            android:textColor="#000000"
-            android:textSize="50sp" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/ll1"
-        android:layout_width="323dp"
-        android:layout_height="560dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="66dp"
-        android:background="@drawable/rounded_main"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/piece">
 
         <TextView
             android:id="@+id/name2"
@@ -88,23 +31,24 @@
             android:gravity="center_horizontal|center_vertical"
             android:inputType="textPersonName"
             android:text="Name"
-            android:textSize="30sp"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textDisplay2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="7"
-            android:background="@drawable/rect_orange"
+            android:background="@drawable/fon_zadn"
             android:ems="10"
             android:gravity="start"
             android:inputType="textMultiLine"
-            android:padding="15dp"
+            android:padding="20dp"
             android:text="Bruh"
-            android:textSize="20sp"
             android:textAlignment="gravity"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:elevation="5dp"/>
 
         <TextView
             android:id="@+id/timerDisplay2"
@@ -116,9 +60,71 @@
             android:inputType="textPersonName"
             android:text="18:00"
             android:textAlignment="gravity"
-            android:textColor="#000000"
-            android:textSize="50sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="50sp"
+            android:elevation="5dp"/>
+
     </LinearLayout>
+
+    <LinearLayout
+        android:elevation="10dp"
+        android:id="@+id/piece"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/rect_orange"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/name1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textDisplay1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:background="@drawable/fon_zadn"
+            android:ems="10"
+            android:gravity="start"
+            android:inputType="textMultiLine"
+            android:padding="20dp"
+            android:text="Bruh"
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:elevation="7dp"/>
+
+        <TextView
+            android:id="@+id/timerDisplay1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center_horizontal|center_vertical"
+            android:inputType="textPersonName"
+            android:text="18:00"
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="50sp"
+            android:elevation="5dp"/>
+
+    </LinearLayout>
+
+
+
 
 
 

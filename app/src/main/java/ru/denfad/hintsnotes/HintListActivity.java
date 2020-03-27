@@ -33,30 +33,35 @@ public class HintListActivity extends AppCompatActivity {
     private ListView hintList;
     public hintDao hintsDao = hintDao.getInstance();
     public HintAdapter adapter;
-
+    public boolean isBackButtonPressed = false;
     public SharedPreferences sharedPreferences;
 
-
+    public String savingListHint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hint_list);
-
+        Intent intent = getIntent();
+        savingListHint = intent.getStringExtra("savingListHint");
+        Log.i("Get lecture", savingListHint);
         //конструкторы сохранения заметок
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(HintListActivity.this);
         GsonBuilder gsonBuilder = new GsonBuilder();
-
+        isBackButtonPressed=false;
         //создание листа из заметок
         hintList=findViewById(R.id.hintList);
         adapter = new HintAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, hintsDao.getHints());
         hintList.setAdapter(adapter);
 
         //проверка на наличие сохраненных заметок
-        if(!sharedPreferences.getString("save","[]").equals("[]") && hintsDao.getAllHints().isEmpty()){
-            Log.i("Save hints", sharedPreferences.getString("save","[]"));
-            hintsDao.addAllHints(Arrays.asList(gsonBuilder.create().fromJson(sharedPreferences.getString("save","[]"),Hint[].class)));
+        if(!sharedPreferences.getString(savingListHint,"[]").equals("[]") && hintsDao.getAllHints().isEmpty()){
+            Log.i("Get hints", sharedPreferences.getString(savingListHint,"[]"));
+            hintsDao.addAllHints(Arrays.asList(gsonBuilder.create().fromJson(sharedPreferences.getString(savingListHint,"[]"),Hint[].class)));
+            String hints = gsonBuilder.create().toJson(hintsDao.getAllHints());
+            Log.i("Add hints to DAO", hints);
         }
+        else Log.i("Get hints", "нет заметок или уже есть в базе данных");
 
 
         //кнопка добавления заметки
@@ -66,9 +71,23 @@ public class HintListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
                 intent.putExtra("hint",hintsDao.getMapSize());
+                intent.putExtra("savingListHint",savingListHint);
                 startActivity(intent);
             }
         });
+
+
+        ImageButton backToLectures= findViewById(R.id.backToLectures);
+        backToLectures.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(),LecturesListActivity.class);
+                isBackButtonPressed=true;
+                Log.i("Clear hints", "true");
+                startActivity(intent1);
+            }
+        });
+
 
         //кнопка включения таймера
         ImageButton play= findViewById(R.id.play);
@@ -76,8 +95,14 @@ public class HintListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(hintsDao.getMapSize()>0){
+                    GsonBuilder gsonBuilder1 = new GsonBuilder();
+                    String hints = gsonBuilder1.create().toJson(hintsDao.getAllHints());
+
+                    Log.i("Add hints to DAO", hints);
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    intent.putExtra("savingListHint",savingListHint);
                     startActivity(intent);
+
                 }
                 else Toast.makeText(getApplicationContext(),"Нет заметок!", Toast.LENGTH_SHORT).show();
             }
@@ -91,7 +116,12 @@ public class HintListActivity extends AppCompatActivity {
         GsonBuilder gsonBuilder = new GsonBuilder();
         String hints = gsonBuilder.create().toJson(hintsDao.getAllHints());
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("save", hints);
+        editor.putString(savingListHint, hints);
+        if(isBackButtonPressed==true) {
+            Log.i("Clear hints onStop", hints);
+            hintsDao.clear();
+
+        }
         Log.i("Save hints", hints);
         editor.apply();
         super.onStop();
@@ -102,9 +132,14 @@ public class HintListActivity extends AppCompatActivity {
     protected void onDestroy() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         String hints = gsonBuilder.create().toJson(hintsDao.getAllHints());
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("save", hints);
         Log.i("Save hints", hints);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(savingListHint, hints);
+        if(isBackButtonPressed==true) {
+            Log.i("Clear hints onDestroy", hints);
+            hintsDao.clear();
+
+        }
         editor.apply();
         super.onDestroy();
     }

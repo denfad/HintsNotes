@@ -3,25 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TimerActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/fon_zadn">
 
-    <LinearLayout
+
+
+    <ListView
+        android:id="@+id/hintList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/back"
+        app:layout_constraintVertical_bias="0.0">
 
-        <ListView
-            android:id="@+id/hintList"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="7"
-            android:padding="10dp">
+    </ListView>
 
-        </ListView>
+    <LinearLayout
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorAccent"
+        android:elevation="5dp">
+
+        <ImageButton
+            android:id="@+id/backToLectures"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/colorAccent"
+            android:src="@drawable/sharp_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
 
     <ImageButton
@@ -29,12 +49,9 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="center_vertical"
-
         android:layout_margin="10dp"
         android:background="@drawable/circle"
-
         android:src="@drawable/sharp_play_arrow_24"
-        android:text="Play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -46,8 +63,8 @@
         android:background="@drawable/circle"
         android:scaleType="centerInside"
         android:src="@drawable/ic_add"
-        android:text="AddHint"
         app:layout_constraintBottom_toTopOf="@+id/play"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

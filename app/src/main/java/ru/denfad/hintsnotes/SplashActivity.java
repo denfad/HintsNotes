@@ -8,7 +8,7 @@ import android.os.Handler;
 public class SplashActivity extends Activity {
 
     // Время в милесекундах, в течение которого будет отображаться Splash Screen
-    private final int SPLASH_DISPLAY_LENGTH = 2000;
+    private final int SPLASH_DISPLAY_LENGTH = 1000;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class SplashActivity extends Activity {
             @Override
             public void run() {
 // По истечении времени, запускаем главный активити, а Splash Screen закрываем
-                Intent mainIntent = new Intent(SplashActivity.this, HintListActivity.class);
+                Intent mainIntent = new Intent(SplashActivity.this, LecturesListActivity.class);
                 SplashActivity.this.startActivity(mainIntent);
                 SplashActivity.this.finish();
             }

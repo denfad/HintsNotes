@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fon_chas_zametk"
+    android:padding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,16 +13,15 @@
         android:orientation="vertical">
 
         <EditText
-
+            android:id="@+id/editTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editTitle"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
             android:elevation="2dp"
             android:gravity="center"
             android:hint="Название заметки"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName|textCapSentences"
             android:textSize="25sp" />
 
         <EditText
@@ -40,12 +41,12 @@
 
         <EditText
             android:gravity="start"
-            android:background="@drawable/rect_orange"
             android:id="@+id/editHintText"
+            android:background="@drawable/rect"
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textMultiLine"
+            android:inputType="textMultiLine|textCapSentences"
             android:selectAllOnFocus="false"
             android:layout_marginLeft="2dp"
             android:hint="Введите заметку"

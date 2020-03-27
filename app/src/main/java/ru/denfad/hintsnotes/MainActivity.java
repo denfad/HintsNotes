@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.GsonBuilder;
+
 import ru.denfad.hintsnotes.dao.hintDao;
 import ru.denfad.hintsnotes.models.Hint;
 
@@ -28,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
     public ImageButton nextTimer;
     public MainActivity.Timer timer;
     public boolean isActive = false;
-    public Long workingtime = 0L;
     public TextView timerText, timerText2;
     public int activeTimer = 0;
     public TextView textDisplay, textDisplay2;
     public TextView titleText, titleText2;
     public LinearLayout piece1, piece2;
+    public String savingListHint;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_main);
-
+        Intent intent = getIntent();
+        savingListHint=intent.getStringExtra("savingListHint");
 
         titleText = findViewById(R.id.name1);
         nextTimer = findViewById(R.id.nextTimer);
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         timerText2 = findViewById(R.id.timerDisplay2);
         piece1 = findViewById(R.id.piece);
         piece2 = findViewById(R.id.ll1);
+
 
         //проверка на запущенность таймера
         if (isActive == false) {
@@ -71,19 +75,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 timer.cancel();
-                timerText.setTextColor(Color.BLACK);
+                timerText.setTextColor(Color.WHITE);
                 isActive = false;
                 activeTimer++;
                 if (activeTimer < hintsDao.getMapSize()) {
                     anim();
-                    textDisplay.setText(hintsDao.getHint(activeTimer).getText());
-                    titleText.setText(hintsDao.getHint(activeTimer).getTitle());
                     timer = new Timer(hintsDao.getHint(activeTimer));
                     timer.start();
                     isActive = true;
                 } else {
                     Toast.makeText(getApplicationContext(), "Презентация окончена", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(getApplicationContext(), HintListActivity.class);
+                    intent1.putExtra("savingListHint",savingListHint);
                     startActivity(intent1);
                 }
 
@@ -105,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onTick(long l) {
             if (l < 0.5 * hint.getMillisInFuture()) {
-                timerText.setTextColor(getResources().getColor(R.color.colorAccent));
+                timerText.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
             }
             int sec = Long.valueOf(l / 1000).intValue();
             int mm = sec / 60;
@@ -135,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
     public void anim() {
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animat_main);
         piece1.startAnimation(animation);
-        piece2.startAnimation(animation);
         textReplacer();
         new CountDownTimer(1000, 1000) {
 
@@ -146,8 +148,8 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animat_back);
                 piece1.startAnimation(animation2);
-                piece2.startAnimation(animation2);
-
+                textDisplay.setText(hintsDao.getHint(activeTimer).getText());
+                titleText.setText(hintsDao.getHint(activeTimer).getTitle());
             }
         }.start();
     }
