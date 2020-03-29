@@ -3,24 +3,31 @@ package ru.denfad.hintsnotes;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.gson.GsonBuilder;
 
@@ -71,7 +78,7 @@ public class LecturesListActivity extends AppCompatActivity {
 
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                openSiteDeleteDialog(adapterView.getItemAtPosition(i).toString());
                 return true;
             }
         });
@@ -79,12 +86,44 @@ public class LecturesListActivity extends AppCompatActivity {
         addLecture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openSiteDialog();
+                openSiteEditDialog();
             }
         });
     }
 
-    private void openSiteDialog() {
+    private void openSiteDeleteDialog(final String lectureName) {
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+
+        final AlertDialog aboutDialog = new AlertDialog.Builder(
+                LecturesListActivity.this).setMessage("Вы точно хотите удалить лекцию / доклад?")
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        lectures.remove(lectureName);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        GsonBuilder gsonBuilder = new GsonBuilder();
+                        editor.putString("lectures", gsonBuilder.create().toJson(lectures));
+                        adapter.notifyDataSetChanged();
+                    }
+
+                })
+                .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+
+                }).create();
+
+        aboutDialog.show();
+
+        ((TextView) aboutDialog.findViewById(android.R.id.message))
+                .setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    private void openSiteEditDialog() {
         final EditText input = new EditText(LecturesListActivity.this);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -113,7 +152,6 @@ public class LecturesListActivity extends AppCompatActivity {
                 .setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-
     @Override
     protected void onStop() {
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -135,5 +173,8 @@ public class LecturesListActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.finish();
+    }
 }
