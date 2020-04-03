@@ -43,12 +43,12 @@
             android:ems="10"
             android:gravity="start"
             android:inputType="textMultiLine"
-            android:padding="10dp"
+            android:padding="20dp"
             android:text="Bruh"
             android:textAlignment="gravity"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:elevation="5dp"/>
+            android:elevation="7dp"/>
 
         <TextView
             android:id="@+id/timerDisplay2"
