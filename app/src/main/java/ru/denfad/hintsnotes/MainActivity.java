@@ -81,9 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 activeTimer++;
                 if (activeTimer < hintsDao.getMapSize()) {
                     anim();
-                    timer = new Timer(hintsDao.getHint(activeTimer));
-                    timer.start();
-                    isActive = true;
                 } else {
                     Toast.makeText(getApplicationContext(), "Презентация окончена", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(getApplicationContext(), HintListActivity.class);
@@ -151,17 +148,23 @@ public class MainActivity extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animat_main);
         piece1.startAnimation(animation);
         textReplacer();
-        new CountDownTimer(1000, 1000) {
+        new CountDownTimer(1000, 100) {
 
+            @Override
             public void onTick(long millisUntilFinished) {
 
             }
 
+            @Override
             public void onFinish() {
                 Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animat_back);
                 piece1.startAnimation(animation2);
                 textDisplay.setText(hintsDao.getHint(activeTimer).getText());
                 titleText.setText(hintsDao.getHint(activeTimer).getTitle());
+
+                timer = new Timer(hintsDao.getHint(activeTimer));
+                timer.start();
+                isActive = true;
             }
         }.start();
     }
@@ -170,5 +173,10 @@ public class MainActivity extends AppCompatActivity {
     public void textReplacer(){
         textDisplay2.setText(hintsDao.getHint(activeTimer).getText());
         titleText2.setText(hintsDao.getHint(activeTimer).getTitle());
+        int sec = Long.valueOf(hintsDao.getHint(activeTimer).getMillisInFuture() / 1000).intValue();
+        int mm = sec / 60;
+        int ss = sec % 60;
+        String text = String.format("%02d:%02d", mm, ss);
+        timerText2.setText(text);
     }
 }
