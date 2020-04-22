@@ -181,6 +181,12 @@ public class LecturesListActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void onBackPressed() {
         super.finish();
     }
@@ -223,4 +229,6 @@ public class LecturesListActivity extends AppCompatActivity {
 
 
     }
+
+
 }

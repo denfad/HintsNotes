@@ -2,9 +2,8 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="Настройки"
-        android:id="@+id/settings"/>
-    <item
-        android:title="Подключиться к конференции"
-        android:id="@+id/conference"/>
+        android:title="Название"
+        android:id="@+id/nameLecture"
+        app:showAsAction="ifRoom"/>
+
 </menu>
