@@ -138,7 +138,7 @@ public class LecturesListActivity extends AppCompatActivity {
         input.setLayoutParams(lp);
 
         final AlertDialog aboutDialog = new AlertDialog.Builder(
-                LecturesListActivity.this).setMessage("Введите названеи новой лекции или доклада")
+                LecturesListActivity.this).setMessage("Введите название новой лекции или доклада")
                 .setView(input)
                 .setPositiveButton("Создать", new DialogInterface.OnClickListener() {
 
