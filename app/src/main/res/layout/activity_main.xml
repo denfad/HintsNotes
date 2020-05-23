@@ -6,7 +6,7 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8D616161"
+    android:background="@color/item_back_color"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -31,7 +31,7 @@
             android:gravity="center_horizontal|center_vertical"
             android:inputType="textPersonName"
             android:text="Name"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_color"
             android:textSize="30sp" />
 
         <TextView
@@ -39,14 +39,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="7"
-            android:background="@drawable/fon_zadn"
+            android:background="@drawable/background_picture"
             android:ems="10"
             android:gravity="start"
             android:inputType="textMultiLine"
             android:padding="20dp"
             android:text="Bruh"
+            android:textColor="@color/text_color"
             android:textAlignment="gravity"
-            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:elevation="7dp"/>
 
@@ -58,9 +58,9 @@
             android:elevation="5dp"
             android:ems="10"
             android:gravity="center|top"
+            android:textColor="@color/text_color"
             android:inputType="textPersonName"
             android:text="18:00"
-            android:textColor="#FFFFFF"
             android:textSize="50sp" />
 
     </LinearLayout>
@@ -81,28 +81,28 @@
 
         <TextView
             android:id="@+id/name1"
+            android:textColor="@color/text_color"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center_horizontal|center_vertical"
             android:inputType="textPersonName"
             android:text="Name"
-            android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textDisplay1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:textColor="@color/text_color"
             android:layout_weight="7"
-            android:background="@drawable/fon_zadn"
+            android:background="@drawable/background_picture"
             android:ems="10"
             android:gravity="start"
             android:inputType="textMultiLine"
             android:padding="20dp"
             android:text="Bruh"
             android:textAlignment="gravity"
-            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:elevation="7dp"/>
 
@@ -112,19 +112,14 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:elevation="5dp"
+            android:textColor="@color/text_color"
             android:ems="10"
             android:gravity="center|top"
             android:inputType="textPersonName"
             android:text="18:00"
-            android:textColor="#FFFFFF"
             android:textSize="50sp" />
 
     </LinearLayout>
-
-
-
-
-
 
     <ImageButton
         android:id="@+id/nextTimer"

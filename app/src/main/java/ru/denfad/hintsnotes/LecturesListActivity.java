@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -30,6 +31,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.gson.GsonBuilder;
@@ -37,6 +39,7 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import ru.denfad.hintsnotes.models.Hint;
 
@@ -45,15 +48,25 @@ public class LecturesListActivity extends AppCompatActivity {
     public SharedPreferences sharedPreferencesLectures;
     public List<String> lectures = new ArrayList<>();
     public ImageButton addLecture;
+    public ImageButton settings;
     public ArrayAdapter adapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setLocale();
         setContentView(R.layout.lecture_list);
 
         listView= findViewById(R.id.lecture_list);
         addLecture=findViewById(R.id.addLecture);
+        settings = findViewById(R.id.settings);
 
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         sharedPreferencesLectures = PreferenceManager.getDefaultSharedPreferences(LecturesListActivity.this);
@@ -104,8 +117,8 @@ public class LecturesListActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT);
 
         final AlertDialog aboutDialog = new AlertDialog.Builder(
-                LecturesListActivity.this).setMessage("Вы точно хотите удалить лекцию / доклад?")
-                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                LecturesListActivity.this).setMessage(getResources().getString(R.string.delete_lecture_message))
+                .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         lectures.remove(lectureName);
@@ -116,7 +129,7 @@ public class LecturesListActivity extends AppCompatActivity {
                     }
 
                 })
-                .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
@@ -138,9 +151,9 @@ public class LecturesListActivity extends AppCompatActivity {
         input.setLayoutParams(lp);
 
         final AlertDialog aboutDialog = new AlertDialog.Builder(
-                LecturesListActivity.this).setMessage("Введите название новой лекции или доклада")
+                LecturesListActivity.this).setMessage(getResources().getString(R.string.create_lecture))
                 .setView(input)
-                .setPositiveButton("Создать", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getResources().getString(R.string.create), new DialogInterface.OnClickListener() {
 
 
                     @Override
@@ -188,7 +201,7 @@ public class LecturesListActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.finish();
+        super.finishAffinity();
     }
 
     public class LectureAdapter extends ArrayAdapter<String>{
@@ -213,9 +226,9 @@ public class LecturesListActivity extends AppCompatActivity {
             GsonBuilder gsonBuilder = new GsonBuilder();
             if(!sharedPreferencesLectures.getString(lecture,"[]").equals("[]")) {
                 List<Hint> hints = Arrays.asList(gsonBuilder.create().fromJson(sharedPreferencesLectures.getString(lecture, "[]"), Hint[].class));
-                holder.hintsNumber.setText("Заметок: "+hints.size());
+                holder.hintsNumber.setText(getResources().getString(R.string.hints)+" "+hints.size());
             }
-            else holder.hintsNumber.setText("Нет заметок");
+            else holder.hintsNumber.setText(getResources().getString(R.string.no_notes));
 
             convertView.setTag(holder);
 
@@ -230,5 +243,27 @@ public class LecturesListActivity extends AppCompatActivity {
 
     }
 
+    private void setLocale() {
+        String lang = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("locale", "ru");
+        Configuration config;
+        Log.d("locale", lang);
+        switch (lang) {
+            case "ru":
+                config = new Configuration();
+                config.locale = new Locale("ru");
+                getResources().updateConfiguration(config, null);
+                break;
+            case "en":
+                config = new Configuration();
+                config.locale = new Locale("en");
+                getResources().updateConfiguration(config, null);
+                break;
+            case "de":
+                config = new Configuration();
+                config.locale = new Locale("de");
+                getResources().updateConfiguration(config, null);
+                break;
+        }
+    }
 
 }

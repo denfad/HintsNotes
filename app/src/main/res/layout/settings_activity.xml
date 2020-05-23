@@ -2,68 +2,103 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fon_chas_zametk"
-    android:padding="5dp">
+    android:background="@drawable/background_picture">
 
     <LinearLayout
+        android:id="@+id/back"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:elevation="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editTitle"
+
+        <ImageButton
+            android:id="@+id/backToLectures"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:src="@drawable/sharp_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:elevation="2dp"
-            android:gravity="center"
-            android:hint="Название заметки"
-            android:inputType="textPersonName|textCapSentences"
-            android:textSize="25sp" />
-
-        <EditText
-
-            android:id="@+id/editTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:elevation="2dp"
-            android:gravity="center"
-            android:hint="Длительность(в минутах)"
-            android:inputType="numberDecimal"
-            android:textSize="20sp" />
-
-
-
-        <EditText
-            android:gravity="start"
-            android:id="@+id/editHintText"
-            android:background="@drawable/rect"
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="textMultiLine|textCapSentences"
-            android:selectAllOnFocus="false"
-            android:layout_marginLeft="2dp"
-            android:hint="Введите заметку"
-            android:layout_marginRight="2dp"
-            android:singleLine="false" />
+            android:text="@string/settings"
+            android:id="@+id/settings_text"
+            android:textColor="@color/text_color"
+            android:textSize="30sp"
+            android:layout_gravity="center_vertical"/>
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/addButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_margin="10dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/back">
 
-        android:background="@drawable/circle"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_add"
-        android:elevation="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/button_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_weight="1"
+            android:background="#616161"
+            android:textColor="#FFFFFF"
+            android:text="Dark" />
+
+        <Button
+            android:id="@+id/button_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_weight="1"
+            android:background="#D6D6D6"
+            android:textColor="#474747"
+            android:text="Light" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="60dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <RadioButton
+            android:layout_margin="5dp"
+            android:id="@+id/radio_en"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="English"
+            android:textSize="24sp"/>
+
+        <RadioButton
+            android:id="@+id/radio_ru"
+            android:layout_margin="5dp"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Русский" />
+
+        <RadioButton
+            android:id="@+id/radio_de"
+            android:layout_margin="5dp"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deutsch" />
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

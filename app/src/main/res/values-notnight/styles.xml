@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.AppCompat.DayNight" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <color name="picture_color">#424242</color>
+    <color name="item_back_color">#8DD6D6D6</color>
+    <color name="text_color">#474747</color>
+    <drawable name="background_picture">@drawable/fon_zadn_svetl</drawable>
+    <drawable name="spalsh_picture">@drawable/shue_black</drawable>
+</resources>

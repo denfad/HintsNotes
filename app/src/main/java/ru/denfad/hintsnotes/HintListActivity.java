@@ -71,7 +71,7 @@ public class HintListActivity extends AppCompatActivity {
         addHint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AddingActivity.class);
                 intent.putExtra("hint",hintsDao.getMapSize());
                 intent.putExtra("savingListHint",savingListHint);
                 startActivity(intent);
@@ -167,7 +167,7 @@ public class HintListActivity extends AppCompatActivity {
             holder.settings.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getContext(), SettingsActivity.class);
+                    Intent intent = new Intent(getContext(), AddingActivity.class);
                     intent.putExtra("savingListHint",savingListHint);
                     intent.putExtra("hint",hint.getPosition());
                     startActivity(intent);

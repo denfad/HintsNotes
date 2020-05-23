@@ -3,14 +3,15 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#8D494747">
+    android:background="@drawable/background_picture">
 
 
 
     <ImageView android:id="@+id/splash_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/loading"
+        android:src="@drawable/spalsh_picture"
+        android:scaleType="centerCrop"
         android:layout_gravity="center"/>
 
 </LinearLayout>

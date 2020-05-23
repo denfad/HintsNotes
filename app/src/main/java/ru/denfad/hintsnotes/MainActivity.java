@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.GsonBuilder;
@@ -41,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         savingListHint=intent.getStringExtra("savingListHint");
@@ -76,13 +76,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 timer.cancel();
-                timerText.setTextColor(Color.WHITE);
+                timerText.setTextColor(getResources().getColor(R.color.text_color));
                 isActive = false;
                 activeTimer++;
                 if (activeTimer < hintsDao.getMapSize()) {
                     anim();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Презентация окончена", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.presentation_over), Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(getApplicationContext(), HintListActivity.class);
                     intent1.putExtra("savingListHint",savingListHint);
                     startActivity(intent1);
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         public void onFinish() {
 
             Log.e("Я закончил выполнять " + hint.getTitle(), "таймер остановлен!");
-            Toast.makeText(getApplicationContext(), "Время слайда окончено", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.slide_time_over), Toast.LENGTH_SHORT).show();
             isActive = false;
             timerText.setTextColor(Color.RED);
             Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -179,4 +179,6 @@ public class MainActivity extends AppCompatActivity {
         String text = String.format("%02d:%02d", mm, ss);
         timerText2.setText(text);
     }
+
+
 }

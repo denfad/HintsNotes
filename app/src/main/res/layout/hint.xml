@@ -19,13 +19,13 @@
 
         <TextView
             android:id="@+id/title"
+            android:textColor="@color/text_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="4"
             android:paddingLeft="10dp"
             android:text="TextView"
-            android:textColor="#FFFFFF"
             android:textSize="20dp" />
 
         <ImageButton
@@ -44,7 +44,6 @@
             android:layout_margin="5dp"
             android:layout_width="40dp"
             android:layout_height="40dp"
-
             android:background="@drawable/circle" />
 
     </LinearLayout>

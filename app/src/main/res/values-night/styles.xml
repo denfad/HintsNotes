@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppThemeDark" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Theme.AppCompat.DayNight" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
     </style>
+
 
     <color name="picture_color">#FFFFFF</color>
     <color name="item_back_color">#8D616161</color>
