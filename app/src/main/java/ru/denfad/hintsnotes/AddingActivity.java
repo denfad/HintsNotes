@@ -25,6 +25,7 @@ public class AddingActivity extends AppCompatActivity {
     public EditText editTime;
     public EditText editHintText;
     public ImageButton addButton;
+    public ImageButton backToHints;
     public boolean newHint=false;
     public String savingListHint;
 
@@ -59,9 +60,6 @@ public class AddingActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
                 if (!TextUtils.isEmpty(editTitle.getText().toString()) && !TextUtils.isEmpty(editTime.getText().toString()) && !TextUtils.isEmpty(editHintText.getText().toString())) {
 
                     hint.setText(editHintText.getText().toString());
@@ -85,7 +83,16 @@ public class AddingActivity extends AppCompatActivity {
 
                     toast.show();
                 }
+            }
+        });
 
+        backToHints=findViewById(R.id.backToHints);
+        backToHints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(),HintListActivity.class);
+                intent1.putExtra("savingListHint",savingListHint);
+                startActivity(intent1);
             }
         });
     }
