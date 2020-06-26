@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_picture">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/tool_bar"
@@ -47,6 +46,7 @@
         android:divider="@color/divider"
         android:dividerHeight="5dp"
         android:padding="5dp"
+        android:background="@drawable/background_picture"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

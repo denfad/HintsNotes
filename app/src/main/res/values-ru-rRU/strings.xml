@@ -2,22 +2,9 @@
 
 <resources>
     <string name="app_name">HintNotes</string>
-    <string name="enter_lecture_name">Введите название новой лекции</string>
-    <string name="present_is_over">Лекция завершена</string>
-    <string name="slide_is_over">Время заметки окончено</string>
-    <string name="enter_in_all_fields">Введите данные во все поля</string>
 
-    <string name="enter_name">Введите название заметки</string>
-
-    <string name="duration">Введите продолжительность заметки (в минутах)</string>
-
-    <string name="enter_hint_text">Введите текст</string>
-    <string name="hint_title">Заметки</string>
     <string name="lecture_title">Лекции</string>
     <string name="create">Создать</string>
-    <string name="hint1">Вы в меню лекций. Попробуйте добавить одну, кликнув на кнопку. Затем клкините по названию лекции</string>
-    <string name="hint2">Каждая лекция состоит из заметок. Здесь вы можете добавлять, редактировать и удалять заметки</string>
-    <string name="hint3"> Попробуйте добавить несколько заметок. Затем кликните на кнопку со стрелкой, чтобы начать лекцию.</string>
     <string name="settings">Настройки</string>
     <string name="delete_lecture_message">Вы точно хотите удалить лекцию / доклад?</string>
     <string name="create_lecture">Введите название новой лекции или доклада</string>
@@ -30,5 +17,7 @@
     <string name="title_of_noat">Название заметки</string>
     <string name="duration_text">Длительность(в минутах)</string>
     <string name="enter_hint">Введите заметку</string>
+    <string name="dark">Темная</string>
+    <string name="light">Светлая</string>
 
 </resources>

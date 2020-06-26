@@ -53,7 +53,7 @@
             android:layout_weight="1"
             android:background="#616161"
             android:textColor="#FFFFFF"
-            android:text="Dark" />
+            android:text="@string/dark" />
 
         <Button
             android:id="@+id/button_light"
@@ -63,7 +63,7 @@
             android:layout_weight="1"
             android:background="#D6D6D6"
             android:textColor="#474747"
-            android:text="Light" />
+            android:text="@string/light" />
     </LinearLayout>
 
     <RadioGroup

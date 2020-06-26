@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HintNotes</string>
-    <string name="enter_lecture_name">
-Geben Sie einen Titel für die neue Vorlesung ein. </string>
-    <string name="present_is_over">
-Vorlesung abgeschlossen</string>
-    <string name="slide_is_over">Beachten Sie, dass die Zeit abgelaufen ist</string>
-    <string name="enter_in_all_fields">Geben Sie Daten in alle Felder ein</string>
 
-    <string name="enter_name">Geben Sie einen Notennamen ein</string>
-
-    <string name="duration">Notendauer eingeben (in Minuten)</string>
-
-    <string name="enter_hint_text">
-Geben Sie Text ein</string>
-    <string name="hint_title">Hinweise</string>
-    <string name="lecture_title">
-Vorträge</string>
+    <string name="lecture_title">die Lektion</string>
     <string name="create">Erstellen</string>
-    <string name="hint1">Sie befinden sich im Vorlesungsmenü. Versuchen Sie, eine hinzuzufügen, indem Sie auf die Schaltfläche klicken. Klicken Sie dann auf den Titel der Vorlesung.</string>
-    <string name="hint2">Jede Vorlesung besteht aus Notizen. Hier können Sie Notizen hinzufügen, bearbeiten und löschen.</string>
-    <string name="hint3"> Versuchen Sie, einige hinzuzufügen. Klicken Sie dann auf die Pfeilschaltfläche, um die Vorlesung zu starten.</string>
     <string name="settings">Einstellungen</string>
     <string name="delete_lecture_message">Möchten Sie die Vorlesung / den Bericht löschen?</string>
     <string name="yes">Ja</string>
@@ -33,6 +16,8 @@ Vorträge</string>
     <string name="title_of_noat">Name der Notiz</string>
     <string name="duration_text">Dauer(in Minuten)</string>
     <string name="enter_hint">Notiz eingeben</string>
+    <string name="dark">Dunkel</string>
+    <string name="light">Licht</string>
 
 
 </resources>

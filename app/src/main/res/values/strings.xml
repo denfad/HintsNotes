@@ -1,26 +1,13 @@
 <resources>
     <string name="app_name">HintNotes</string>
-    <string name="enter_lecture_name">Enter the name of a new lecture </string>
-    <string name="present_is_over">The lecture is over</string>
-    <string name="slide_is_over">The time of the Hint is over</string>
-    <string name="enter_in_all_fields">Enter your data in all fields</string>
 
-    <string name="enter_name">Enter the title of the Hint</string>
-
-    <string name="duration">Enter the duration (minutes)</string>
-
-    <string name="enter_hint_text">Enter the text</string>
-    <string name="hint_title">Hints</string>
     <string name="lecture_title">Lectures</string>
     <string name="create">Create</string>
-    <string name="hint1">You are at your lecture panel. Try to add one by clicking  the button. Then click on your lecture</string>
-    <string name="hint2">Each lecture consists of a bunch of hints. There you can add, edit and delete them.</string>
-    <string name="hint3"> Try to add a few. Than click the play button to start going through your lecture.</string>
     <string name="settings">Settings</string>
     <string name="delete_lecture_message">Are you sure you want to delete the lecture / report?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="create_lecture">Enter the name of the new lectur</string>
+    <string name="create_lecture">Enter the name of the new lecture</string>
     <string name="no_notes">No notes</string>
     <string name="hints">Hints:</string>
     <string name="presentation_over">Presentetion is over</string>
@@ -28,5 +15,7 @@
     <string name="title_of_noat">The title of the note</string>
     <string name="duration_text">Duration(in minutes)</string>
     <string name="enter_hint">Enter a note</string>
+    <string name="dark">Dark</string>
+    <string name="light">Light</string>
 
 </resources>

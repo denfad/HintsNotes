@@ -1,16 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppThemeDark" parent="Theme.MaterialComponents.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
     <color name="picture_color">#FFFFFF</color>
     <color name="item_back_color">#8D616161</color>
     <color name="text_color">#FFFFFF</color>
-    <drawable name="background_picture">@drawable/fon_zadn</drawable>
+    <drawable name="background_picture">@drawable/view_with_bacground_day</drawable>
     <drawable name="spalsh_picture">@drawable/shue_wight</drawable>
 </resources>
